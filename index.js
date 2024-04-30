@@ -2,6 +2,7 @@ import express from 'express'
 import {db} from './config/configuracion_firebase.js'
 // 'npm uninstall firebase' y luego 'npm i firebase@8.6.8'
 // https://www.youtube.com/watch?v=SxEVnwHsrDg
+// npm run dev
 
 const app = express();
 
@@ -39,4 +40,11 @@ app.get('/borrar/:id', (req,res)=>{
     let id = req.params.id
     db.collection('agenda_contactos').doc(id).delete()
     res.redirect('/')
+})
+app.get('/contacto/:id',async(req,res)=>{
+    let id = req.params.id
+    const peticion = await db.collection('agenda_contactos').doc(id).get()
+    const contacto = {id:id, datos:peticion.data()}
+    console.log(contacto)
+    res.render('contacto', {contacto})
 })

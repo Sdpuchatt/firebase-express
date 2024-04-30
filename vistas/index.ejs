@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Agenda de contactos</title>
 </head>
 <body>
@@ -17,7 +18,7 @@
         <button type="submit">Agregar contacto</button>
         <br>
         <% contactos.map(item =>{ %>
-            <p><%= item.datos.nombre%></p>
+            <a href="contacto/<%= item.id %>"><%= item.datos.nombre %></a>
             <a href="borrar/<%= item.id %>">borrar</a>
         <% })%>
     </form>
