@@ -1,4 +1,7 @@
-const express = require('express');
+import express from 'express'
+import {db} from './config/configuracion_firebase.js'
+// 'npm uninstall firebase' y luego 'npm i firebase@8.6.8'
+
 const app = express();
 
 app.listen('8000', (req,res)=>{
@@ -12,5 +15,6 @@ app.use(express.static('./estilos'))
 
 app.get('/',(req,res)=>{
     // res.send('funciona todo');
+    console.log(db)
     res.render('index')
 });
