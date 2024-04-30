@@ -7,5 +7,20 @@
 </head>
 <body>
     <h2>Desde el back</h2>
+
+    <form action="agregar" method="post">
+
+        <input type="text" name="nombre" placeholder="nombre">
+        <input type="text" name="numero" placeholder="numero">
+        <input type="text" name="direccion" placeholder="direccion">
+        <input type="text" name="telefono" placeholder="telefono">
+        <button type="submit">Agregar contacto</button>
+        <br>
+        <% contactos.map(item =>{ %>
+            <p><%= item.datos.nombre%></p>
+            <a href="borrar/<%= item.id %>">borrar</a>
+        <% })%>
+    </form>
+
 </body>
 </html>
